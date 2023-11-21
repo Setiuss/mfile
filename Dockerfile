@@ -1,4 +1,4 @@
-FROM образ quay.io/projectquay/golang:1.20
+FROM quay.io/projectquay/golang:1.20
 WORKDIR /
 #COPY . .
 #RUN make build
