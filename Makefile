@@ -15,7 +15,9 @@ test:
 get:
 	go get
 
-build:
+linux:
+	TARGETOS=linux		#Linux darwin Windows
+	TARGETARCH=amd64	#arm64
 	CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -ldflags "-X="quay.io/projectquay/golang:1.20
 
 image:
@@ -23,7 +25,7 @@ image:
 	docker build .
 
 push:
-	docker push ${REGISTRY}/${APP}:${VERSION}-${TARGETARCH}
+#	docker push ${REGISTRY}/${APP}:${VERSION}-${TARGETARCH}
 
 clean:
 	rm -rf kbot
