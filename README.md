@@ -1,6 +1,34 @@
 # mfile
 check Makefile with Dockerfile
 
+man for https://shell.cloud.google.com/
+set auth:
+git config --global user.email "you@example.com"
+git config --global user.name "Your Name"
+gcloud auth login
+
+clon repository:
+https://github.com/setiuss/mfile.git
+
+build image:
+docker build .
+
+set tag version:
+git tag -a v1.0.0 -m "app version"
+
+commands:
+make linux   - linux/amd64
+make arm     - linux/arm64
+make macos   - darwin/amd64
+make windows - windows/amd64
+make image   - build image for push
+make push    - push to repository set in REGISTRY
+make clean   - deleting the compiled file 
+
+---
+
+TASK:
+
 Makefile та Dockerfile для тестування коду продукту на різних платформах та архітектурах, включаючи Linux, arm, macOS та Windows.
 
 Ось що мені потрібно:
