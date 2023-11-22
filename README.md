@@ -17,6 +17,7 @@ set tag version:
 git tag -a v1.0.0 -m "app version"
 
 commands:
+make build   - compiled file from GOOS=${TARGETOS} GOARCH=${TARGETARCH}
 make linux   - linux/amd64
 make arm     - linux/arm64
 make macos   - darwin/amd64
@@ -24,7 +25,7 @@ make windows - windows/amd64
 make image   - build image for push
 make push    - push to repository set in REGISTRY
 make clean   - deleting the compiled file 
-
+make rmi     - deleting the build image
 ---
 
 TASK:
