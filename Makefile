@@ -1,8 +1,9 @@
 APP=$(shell basename $(shell git remote get-url origin))
-REGISTRY=setius
-#VERSION=$(shell git describe --tags --abbrev=0)-$(shell git rev-parse --short HEAD)
-TARGETOS=linux		#Linux darwin Windows
-TARGETARCH=amd64	#arm64
+#REGISTRY=setius
+REGISTRY=gitlab.com/setius1/k8s-k3s
+VERSION=$(shell git describe --tags --abbrev=0)-$(shell git rev-parse --short HEAD)
+#TARGETOS=linux		#Linux darwin Windows
+#TARGETARCH=amd64	#arm64
 format:
 	gofmt -s -w ./
 
@@ -16,16 +17,24 @@ get:
 	go get
 
 linux:
-	TARGETOS=linux		#Linux darwin Windows
-	TARGETARCH=amd64	#arm64
-	CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -ldflags "-X="quay.io/projectquay/golang:1.20
+	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -v -o mfile
+
+arm:
+	CGO_ENABLED=0 GOOS=linux GOARCH=arm64 go build -v -o mfile
+
+macOS:
+	CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build -v -o mfile
+
+windows:
+	CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -v -o mfile
 
 image:
-#	docker build . -t ${REGISTRY}/${APP}:${VERSION}-${TARGETARCH}
-	docker build .
+	docker build . -t ${REGISTRY}/${APP}:${VERSION}-${TARGETARCH}
+#	docker build .
 
 push:
-#	docker push ${REGISTRY}/${APP}:${VERSION}-${TARGETARCH}
+	docker push ${REGISTRY}/${APP}:${VERSION}-${TARGETARCH}
+#	docker push gitlab.com/setius1/k8s-k3s
 
 clean:
-	rm -rf kbot
+	rm -rf mfile
