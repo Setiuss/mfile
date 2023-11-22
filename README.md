@@ -26,6 +26,9 @@ make image   - build image for push
 make push    - push to repository set in REGISTRY
 make clean   - deleting the compiled file 
 make rmi     - deleting the build image
+
+GOOS & GOARCH type:
+https://gist.github.com/asukakenji/f15ba7e588ac42795f421b48b8aede63
 ---
 
 TASK:
