@@ -1,7 +1,8 @@
 APP=$(shell basename $(shell git remote get-url origin))
 #REGISTRY=setius
 REGISTRY=gcr.io/k8s-k3s-405618
-VERSION=$(shell git describe --tags --abbrev=0)-$(shell git rev-parse --short HEAD)
+#VERSION=$(shell git describe --tags --abbrev=0)-$(shell git rev-parse --short HEAD)
+VERSION=v1.0.0-$(shell git rev-parse --short HEAD)
 #linux darwin windows
 TARGETOS=linux
 #amd64 arm64
